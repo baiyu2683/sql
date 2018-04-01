@@ -1,0 +1,2 @@
+*** sql基础教程, 2018.04.01完结，GroupIng相关mysql支持不好，之后换用postgresql再看
+*** sql进阶教程
