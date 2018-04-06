@@ -1,0 +1,3 @@
+/* 仅适用于Oracle和MySQL */
+SELECT key, GREATEST(GREATEST(x,y), z) AS greatest
+  FROM Greatests;
