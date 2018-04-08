@@ -58,3 +58,4 @@ ORDER BY sort_col;
 select `key`
 from greatests
 order by field(`key`, 'B', 'A', 'D', 'C');
+学
