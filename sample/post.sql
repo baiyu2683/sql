@@ -4,6 +4,7 @@ create table wechat_post(
        creatorId varchar(40),
        publishTime bigint,
        circleId varchar(40),
+       location varchar(100),
        longitude decimal(10, 7),
        latitude decimal(10, 7),
        content longtext,
