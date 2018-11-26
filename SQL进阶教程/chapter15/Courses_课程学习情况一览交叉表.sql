@@ -11,3 +11,11 @@ left outer join (select distinct `name` from Courses where course = 'UNIX基础'
 on c0.`name` = c2.`name`
 left outer join (select distinct `name` from Courses where course = 'Java中级') as c3
 on c0.`name` = c3.`name`;
+
+- 利用case表达式
+select `name`,
+       case when sum(case when course = 'SQL入门' then 1 else 0 end) = 1 then '@' else '' end as 'SQL入门',
+       case when sum(case when course = 'UNIX基础' then 1 else 0 end) = 1 then '@' else '' end as 'UNIX基础',
+       case when sum(case when course = 'Java中级' then 1 else 0 end) = 1 then '@' else '' end as 'Java中级'
+from Courses
+group by `name`;
