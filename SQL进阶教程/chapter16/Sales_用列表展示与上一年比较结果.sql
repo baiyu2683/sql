@@ -1,7 +1,25 @@
--- 使用子查询
+-- 子查询实现
 select year, sale,
-       case when sale = (select sale from Sales as S2 where S1.year - 1 = S2.year) then '->'
-       when sale > (select sale from Sales as S2 where S1.year - 1 = S2.year) then '^'
-       when sale < (select sale from Sales as S2 where S1.year - 1 = S2.year) then 'V'
-       else '-' end as var
-from Sales as S1;
+       case when sale = (select sale from Sales s2 where s2.year = s1.year - 1) then '->'
+       when sale > (select sale from Sales s2 where s2.year = s1.year - 1) then '>'
+       when sale < (select sale from Sales s2 where s2.year = s1.year - 1) then '<'
+       else '-' END as var
+from Sales s1
+order by s1.year;
+
+
+-- 自连接实现
+select s1.year, s1.sale,
+       case when s1.sale = s2.sale then "->"
+       when s1.sale > s2.sale then ">"
+       when s1.sale < s2.sale then "<"
+       else "-" end as var
+from Sales as s1
+inner join Sales as s2
+on s1.year - 1 = s2.year;
+
+
+-- 将上面两个结果的年份和var转换成横着展示的
+
+-- TODO
+

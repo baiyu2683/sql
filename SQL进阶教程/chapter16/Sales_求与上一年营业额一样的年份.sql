@@ -1,11 +1,17 @@
--- 使用子查询
-select year, sale
-from Sales as S1
-where sale = (select sale from Sales as S2 where S1.year - 1 = S2.year);
+-- 使用关联子查询
+select `year`, sale
+from Sales s1
+where sale = (
+      select sale
+      from Sales s2
+      where s2.sale = s1.sale
+            and s2.year = s1.year - 1
+)
+order by year;
+
 
 -- 使用自连接
-select S1.year, S1.sale
-from Sales S1, Sales S2
-where S2.sale = S1.sale
-and S2.year = S1.year - 1
-order by S1.year;
+select s1.year, s1.sale
+from Sales s1
+join Sales s2
+on s1.year - 1 = s2.year and s1.sale = s2.sale;
