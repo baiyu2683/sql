@@ -12,6 +12,6 @@ select prc_date, A1.prc_amt,
        and (
        select count(*) from Accounts A3 where A3.prc_date between A2.prc_date and A1.prc_date
        ) <= 3
-       having count(*) = 3
+       having count(*) = 3 -- 不满三行的按无效数据处理
        ) as onhand_amt
 from Accounts A1;

@@ -1,0 +1,13 @@
+#+title: 本章要点
+
+** sql集合运算三种操作
+   1. UNION，并，会将多张表中相同记录进行合并输出，过滤重复的
+
+      UNION ALL会保留重复的
+
+      UNION由于会过滤重复的，因此会对记录进行排序，性能比UNION ALL稍低，如果确定
+      没有重复的，使用UNION ALL好一点
+   2. INTERSECT，交, mysql不支持，可以使用inner join，on后面加条件
+   3. EXCEPT，差，mysql不支持，可以使用left join，on后面增加两张表相等条件，并且加上右表此条件的字段为null
+   4. DIVIDE，除，不支持
+   
