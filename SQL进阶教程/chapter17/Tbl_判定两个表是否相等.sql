@@ -31,3 +31,15 @@ left join Tbl_B as b
 on a.keycol = b.keycol and a.col_1 = b.col_1 and a.col_2 = b.col_2 and a.col_3 = b.col_3)
 );
 
+
+
+-- 仅使用union判断两张表是否相等
+select case when count(*) = (select count(*) from Tbl_A)
+                 and count(*) = (select count(*) from Tbl_B)
+                 then '相等'
+                 else '不相等' end result
+from (
+ select * from Tbl_A
+ union
+ select * from Tbl_B
+) tmp;
